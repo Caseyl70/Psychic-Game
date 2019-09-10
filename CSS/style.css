@@ -1,0 +1,14 @@
+/* style sheet for the looks of the html document */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: grey;
+}
+
+h1,
+h2,
+li {
+    color: cornsilk;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
