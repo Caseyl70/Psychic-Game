@@ -15,12 +15,9 @@ document.onkeyup = function(event) {
         win++;
         left = 10;
         made = [];
-    }
-    if (roboAttempt = userAttempt) {
-        left--;
-    }
-    if (left == 0) {
-        loss++;
+        alert("Winner Winnner!")
+    } else if (userAttempt === roboAttempt) {
+        lose++;
         left = 10;
         made = [];
     }
