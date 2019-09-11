@@ -4,23 +4,58 @@ var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n
 var win = 0;
 var loss = 0;
 var left = 10;
-var made = []
+var made = 0;
+var random;
+var gameOver = false;
 var userAttempt = document.onkeyup;
-var roboAttempt = alpha[Math.floor(Math.random() * alpha.length)];
-// inputing function for the document.onkeyup
+// this will fucntion as amount of wins losses and guesses
+function correctAnswer() {
+    document.querySelector("#Wins").innerHTML = "Wins: " + win;
+}
+
+function wrongAnswer() {
+    document.querySelector("#Loses").innerHTML = "Losses: " + loss;
+}
+
+function remaining() {
+    document.querySelector("#Left").innerHTML = "Guesses Left: " + left;
+}
+
+function attempts() {
+    document.querySelector("#Guesses").innerHTML = "Guesses: " + made;
+}
+
+
+// inputing function for the document.onkeyup and randomizes the selection of alpha
 document.onkeyup = function(event) {
-    userAttempt = event.key;
-    made.push(userAttempt);
-    if (roboAttempt === userAttempt) {
+    var userInput = event.key.toLowerCase();
+    random = alpha[Math.floor(Math.random() * alpha.length)];
+    console.log(random);
+    // console.log(userInput)
+    console.log(userInput);
+    made++;
+    attempts();
+    // if else for possible outcomes
+    if (random === userAttempt) {
         win++;
+        gameOver = true;
         left = 10;
         made = [];
-        alert("Winner Winnner!")
-    } else if (userAttempt === roboAttempt) {
-        lose++;
+        correctAnswer();
+        alert("Shake N' Bake!")
+    } else if (left === 1) {
+        loss++;
         left = 10;
-        made = [];
+        remaining();
+        wrongAnswer();
+        alert("Not even close, Try again ")
+    } else {
+        left--;
+        wrongAnswer();
+        remaining();
+        // alert("Give up.")
     }
+
     // retaining info from index.html
-    document.getElementById(".game");
+    // document.getElementById(".game");
 }
