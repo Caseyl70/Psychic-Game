@@ -5,9 +5,9 @@ var win = 0;
 var loss = 0;
 var left = 10;
 var made = 0;
-var random;
 var gameOver = false;
-var userAttempt = document.onkeyup;
+var random = alpha[Math.floor(Math.random() * alpha.length)];
+console.log("random", random);
 // this will fucntion as amount of wins losses and guesses
 function correctAnswer() {
     document.querySelector("#Wins").innerHTML = "Wins: " + win;
@@ -28,15 +28,14 @@ function attempts() {
 
 // inputing function for the document.onkeyup and randomizes the selection of alpha
 document.onkeyup = function(event) {
-    var userInput = event.key.toLowerCase();
-    random = alpha[Math.floor(Math.random() * alpha.length)];
-    console.log(random);
+    var userInput = event.key;
+
     // console.log(userInput)
     console.log(userInput);
     made++;
     attempts();
     // if else for possible outcomes
-    if (random === userAttempt) {
+    if (random === userInput) {
         win++;
         gameOver = true;
         left = 10;
